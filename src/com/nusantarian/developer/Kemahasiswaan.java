@@ -1,17 +1,18 @@
 package com.nusantarian.developer;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Kemahasiswaan {
-    static Scanner in = new Scanner(System.in);
+    private static InputStreamReader in = new InputStreamReader(System.in);
+    private static BufferedReader input = new BufferedReader(in);
     private static ArrayList Nama = new ArrayList();
     private static ArrayList Nim = new ArrayList();
     private static ArrayList Prodi = new ArrayList();
-    static String nama,prodi,pil;
-    static int nim;
+    private static String nama,prodi,pil;
+    private static int nim;
     private static boolean go = true;
-    public static void showMenu(){
+    public static void showMenu() throws IOException {
         System.out.println("Data Mahasiswa");
         System.out.println("-----------------------------");
         do{
@@ -22,7 +23,7 @@ public class Kemahasiswaan {
             System.out.println("5. Keluar");
             System.out.println("-----------------------------");
             System.out.print("Masukkan Pilihan = ");
-            pil = in.next();
+            pil = input.readLine();
             System.out.println("-----------------------------");
             switch (pil){
                 case "1": tambahdata();break;
@@ -32,30 +33,25 @@ public class Kemahasiswaan {
             }
         }while(pil != "5");
     }
-    public static void tambahdata(){
+    public static void tambahdata() throws IOException {
         do{
-            if(Nama.isEmpty()){
-                System.out.println("Data Kosong");
-            }else{
-                System.out.println();
-                System.out.print("Masukkan Nama Mahasiswa = ");
-                nama = in.nextLine();
-                Nama.add(nama);
-                System.out.print("Masukkan NIM Mahasiswa  = ");
-                nim = in.nextInt();
-                Nim.add(nim);
-                System.out.print("Masukkan Prodi Mahasiswa= ");
-                prodi = in.nextLine();
-                Prodi.add(prodi);
-                System.out.println("-----------------------------");
-                System.out.print("Apakah Anda Ingin Menginput Data Lagi <y/n>? ");
-                String tanya = in.next();
-                if(tanya.charAt(0)=='y'||tanya.charAt(0)=='Y'){
-                    go = true;
-                }
-                if(tanya.charAt(0)=='n'||tanya.charAt(0)=='N'){
-                    showMenu();
-                }
+            System.out.print("Masukkan Nama Mahasiswa = ");
+            nama = input.readLine();
+            Nama.add(nama);
+            System.out.print("Masukkan NIM Mahasiswa  = ");
+            nim = input.read();
+            Nim.add(nim);
+            System.out.print("Masukkan Prodi Mahasiswa= ");
+            prodi = input.readLine();
+            Prodi.add(prodi);
+            System.out.println("-----------------------------");
+            System.out.print("Apakah Anda Ingin Menginput Data Lagi <y/n>? ");
+            String tanya = input.readLine();
+            if(tanya.charAt(0)=='y'||tanya.charAt(0)=='Y'){
+                go = true;
+            }
+            if(tanya.charAt(0)=='n'||tanya.charAt(0)=='N'){
+                showMenu();
             }
         }while(go);
     }
@@ -71,7 +67,7 @@ public class Kemahasiswaan {
             System.out.println("-----------------------------");
         }
     }
-    public static void main(String[] args){
+    public static void main(String[] args)throws IOException{
         showMenu();
     }
 }
