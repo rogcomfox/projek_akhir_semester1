@@ -1,19 +1,17 @@
 package com.nusantarian.developer;
 
-import java.io.*;
+
 import java.util.*;
 
 public class Kemahasiswaan {
-    private static InputStreamReader in = new InputStreamReader(System.in);
     private static Scanner is = new Scanner(System.in);
-    private static BufferedReader input = new BufferedReader(in);
     private static ArrayList Nama = new ArrayList();
     private static ArrayList Nim = new ArrayList();
     private static ArrayList Prodi = new ArrayList();
     private static String nama,prodi,pil,tanya;
     private static int nim;
     private static boolean go = true;
-    public static void showMenu() throws IOException {
+    private static void showMenu() {
         System.out.println("Data Mahasiswa");
         System.out.println("-----------------------------");
         do{
@@ -34,23 +32,23 @@ public class Kemahasiswaan {
             }
         }while(go);
     }
-    public static void tambahdata() throws IOException {
+    public static void tambahdata(){
         do{
             System.out.print("Masukkan Nama Mahasiswa = ");
-            nama = input.readLine();
+            nama = is.next();
             Nama.add(nama);
             System.out.print("Masukkan Prodi Mahasiswa= ");
-            prodi = input.readLine();
+            prodi = is.next();
             Prodi.add(prodi);
             System.out.print("Masukkan NIM Mahasiswa  = ");
-            nim = input.read();
+            nim = is.nextInt();
             Nim.add(nim);
             System.out.print("Apakah Anda Ingin Menginput Data Lagi <y/n>? ");
             ulang();
             System.out.println("-----------------------------");
         }while(go);
     }
-    private static void ulang() throws IOException {
+    private static void ulang(){
         tanya = is.next();
         if(tanya.charAt(0)=='y'||tanya.charAt(0)=='Y'){
             return;
@@ -73,7 +71,7 @@ public class Kemahasiswaan {
             System.out.println("-----------------------------");
         }
     }
-    public static void main(String[] args)throws IOException{
+    public static void main(String[] args){
         showMenu();
     }
 }
