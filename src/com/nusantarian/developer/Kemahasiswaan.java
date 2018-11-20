@@ -8,7 +8,7 @@ public class Kemahasiswaan {
     private static ArrayList Nama = new ArrayList();
     private static ArrayList Nim = new ArrayList();
     private static ArrayList Prodi = new ArrayList();
-    private static String nama,prodi,pil,tanya;
+    private static String nama,prodi,pil,tanya,a;
     private static int nim;
     private static boolean go = true;
     private static void showMenu() {
@@ -26,12 +26,34 @@ public class Kemahasiswaan {
             System.out.println("-----------------------------");
             switch (pil){
                 case "1": tambahdata();break;
-                case "2":
+                case "2": caridata();break;
                 case "3": tampildata();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Ini");go = false;break;
             }
         }while(go);
     }
+
+    private static void caridata() {
+        do{
+            if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
+                System.out.println("Data Kosong");
+            }else{
+                System.out.print("Masukkan Nama = ");
+                nama = is.next();
+                System.out.println("-----------------------------");
+                for(int i = 0; i < Nama.size();i++){
+                    a = Nama.get(i).toString();
+                    if(nama.equalsIgnoreCase(a)){
+                        System.out.printf("Nama  = %s\nNIM   = %s\nProdi = %s\n",Nama.get(i),Nim.get(i),Prodi.get(i));
+                        System.out.println("-----------------------------");
+                        System.out.print("Apakah Ingin Mencari Data Lagi <y/n>? ");
+                        ulang();
+                    }
+                }
+            }
+        }while (go);
+    }
+
     public static void tambahdata(){
         do{
             System.out.print("Masukkan Nama Mahasiswa = ");
@@ -60,7 +82,7 @@ public class Kemahasiswaan {
         }
     }
     public static void tampildata(){
-        if(Nama.isEmpty()){
+        if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
             System.out.println("Data Kosong");
         }else{
             System.out.println("Daftar Mahasiswa");
