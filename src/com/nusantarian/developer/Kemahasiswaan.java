@@ -50,10 +50,10 @@ public class Kemahasiswaan {
     }
     private static void ulang(){
         tanya = is.next();
-        if(tanya.charAt(0)=='y'||tanya.charAt(0)=='Y'){
+        if("y".equalsIgnoreCase(tanya)){
             return;
         }
-        if(tanya.charAt(0)=='n'||tanya.charAt(0)=='N'){
+        if("n".equalsIgnoreCase(tanya)){
             showMenu();
         }else{
             System.out.println("Masukkan Salah");ulang();
