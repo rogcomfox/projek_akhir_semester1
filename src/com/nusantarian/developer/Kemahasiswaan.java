@@ -28,9 +28,21 @@ public class Kemahasiswaan {
                 case "1": tambahdata();break;
                 case "2": caridata();break;
                 case "3": tampildata();break;
+                case "4": hapusdata();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Ini");go = false;break;
             }
         }while(go);
+    }
+
+    private static void hapusdata() {
+        do{
+            if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
+                System.out.println("Data Kosong");
+            }else{
+                System.out.print("Masukkan Nama yang Akan Dihapus");
+                nama = is.next();
+            }
+        }while (go);
     }
 
     private static void caridata() {

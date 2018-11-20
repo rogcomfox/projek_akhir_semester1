@@ -33,6 +33,7 @@ public class Tiket {
             System.out.print("Masukkan Pilihan = ");
             pil = in.next();
             switch (pil){
+                case "1":
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Kami");jalan = false;break;
                 default:System.out.println("Masukkan Salah!");break;
             }
