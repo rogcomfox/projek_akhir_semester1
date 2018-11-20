@@ -4,11 +4,12 @@ import java.util.*;
 
 public class NilaiMahasiswa {
     private static Scanner in = new Scanner(System.in);
-    private static String[] Nama = new String [30];
-    private static int[][] angka = new int[30][2];
-    private static boolean jalan = true,go;
-    private static String pil,nama;
-    private static int nim, nilai, count = 0;
+    private static ArrayList Nama = new ArrayList();
+    private static ArrayList Nim  = new ArrayList();
+    private static ArrayList Nilai = new ArrayList();
+    private static boolean jalan,go = true;
+    private static String pil,nama,tanya;
+    private static int nim, nilai;
 
     private static void showMenu(){
         System.out.println("Program Nilai Mahasiswa");
@@ -26,36 +27,26 @@ public class NilaiMahasiswa {
                 case "1": tambahnilai();break;
                 case "3": lihatnilai();break;
             }
-        }while(jalan);
+        }while(go);
     }
 
     private static void tambahnilai() {
         do{
             System.out.print("Masukkan Nama  = ");
             nama = in.next();
-            System.out.print("Masukkan Nim   = ");
+            Nama.add(nama);
+            System.out.print("Masukkan NIM   = ");
             nim = in.nextInt();
-            System.out.print("Masukkan Nilai = ");
+            System.out.print("Masukkan Nilai");
             nilai = in.nextByte();
-            for(int i = 0; i < count; i++){
-                if (nama.equalsIgnoreCase(Nama[i])){
-                    go = true;break;
-                }
-            }
-            if(go = false){
-                nim = angka[count][0];
-                nilai = angka[count][1];
-            }else{
-                System.out.println("Maff Data Sudah Ada, Silahkan Masukkan Data Lain");
-            }
-        }while(jalan);
-        count++;
-        System.out.println("Data Berhasil Disimpan");
+        }while(go);
     }
-
     private static void lihatnilai() {
-        if(Nama == null && angka == null){
+        if(Nama.isEmpty()&&Nilai.isEmpty()&&Nim.isEmpty()){
             System.out.println("Data Kosong, Silahkan Isikan Data Terlebih Dahulu");tambahnilai();
         }
+    }
+    public static void main(String[]args){
+        showMenu();
     }
 }
