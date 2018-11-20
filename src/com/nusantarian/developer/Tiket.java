@@ -6,12 +6,16 @@ public class Tiket {
     private static Scanner in = new Scanner(System.in);
     private static boolean jalan = true;
     private static String [][] TiketPesawat = {
-            {""},
-            {""},
+            {"0001","27 Oktober 2018","Malang","Jakarta"},
+            {"0002","28 Oktober 2018","Jakarta","Malang"},
+            {"0003","29 Oktober 2018","Jakarta","Surabaya"},
+            {"0004","30 Oktober 2018","Surabaya","Jakarta"},
     };
     private static String [][] TiketKereta = {
-            {""},
-            {""},
+            {"1001","1 November 2018","Malang","Jakarta"},
+            {"1002","2 November 2018","Jakarta","Malang"},
+            {"1003","3 November 2018","Surabaya","Jakarta"},
+            {"1004","4 November 2018","Jakarta","Surabaya"},
     };
     private static ArrayList Username = new ArrayList();
     private static ArrayList Password = new ArrayList();
