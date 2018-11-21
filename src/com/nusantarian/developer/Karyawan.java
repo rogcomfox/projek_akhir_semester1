@@ -11,7 +11,7 @@ public class Karyawan {
     private static ArrayList Alamat = new ArrayList();
     private static boolean jalan = true;
     private static int telepon;
-    private static String pil, email, nama,id,alamat;
+    private static String pil, tanya, email, nama,id,alamat;
 
     private static void showMenu(){
         System.out.println("Database Karyawan");
@@ -27,22 +27,46 @@ public class Karyawan {
             pil = in.next();
             switch (pil){
                 case "1":tambahdata();break;
+                case "2":editdata();break;
                 case "6":System.out.println("Terimakasih Telah Menggunakan Program Kami");jalan = false;break;
                 default:System.out.println("Masukkan Salah");break;
             }
         }while (jalan);
     }
     private static void tambahdata(){
-        System.out.print("Masukkan Nama   = ");
-        in.nextLine();
-        nama = in.nextLine();
-        System.out.print("Masukkan ID     = ");
-        id = in.next();
-        System.out.print("Masukkan Alamat = ");
-        alamat = in.next();
-        System.out.print("Masukkan Email  = ");
-        email = in.next();
-        System.out.print("Masukkan Telpon = ");
-        telepon = in.nextInt();
+        do{
+            System.out.print("Masukkan Nama   = ");
+            in.nextLine();
+            nama = in.nextLine();
+            System.out.print("Masukkan ID     = ");
+            id = in.next();
+            System.out.print("Masukkan Alamat = ");
+            alamat = in.next();
+            System.out.print("Masukkan Email  = ");
+            email = in.next();
+            System.out.print("Masukkan Telpon = ");
+            telepon = in.nextInt();
+            Nama.add(nama);
+            ID.add(id);
+            Alamat.add(alamat);
+            Email.add(email);
+            Telpon.add(telepon);
+            System.out.print("Apakah Anda Ingin Menambah Data Lagi <y/n>? ");
+            ulang();
+        }while(jalan);
+    }
+    private static void ulang(){
+        tanya = in.next();
+        if("y".equalsIgnoreCase(tanya)){
+            return;
+        }
+        if ("n".equalsIgnoreCase(tanya)){
+            showMenu();
+        }else{
+            System.out.print("Masukkan Salah");ulang();
+        }
+    }
+    private static void editdata(){
+
     }
 }
