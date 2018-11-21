@@ -40,7 +40,8 @@ public class Kemahasiswaan {
                 System.out.println("Data Kosong");
             }else{
                 System.out.print("Masukkan Nama yang Akan Dihapus");
-                nama = is.next();
+                is.nextLine();
+                nama = is.nextLine();
             }
         }while (go);
     }

@@ -89,6 +89,15 @@ public class NilaiMahasiswa {
         if(nilai >= 50) ip = "D"; ip1 = 0.50;
         if(nilai >= 0) ip = "E"; ip1 = 0.00;
     }
+    private static void carinilai(){
+        do{
+            if(Nama.isEmpty()&&Nilai.isEmpty()&&Nim.isEmpty()) {
+                System.out.println("Data Kosong, Silahkan Isikan Data Terlebih Dahulu");tambahnilai();
+            }else{
+                System.out.print("Masukkan Nama = ");
+            }
+        }while (go);
+    }
     public static void main(String[]args){
         showMenu();
     }
