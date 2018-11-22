@@ -5,6 +5,7 @@ import java.util.*;
 public class Tiket {
     private static Scanner in = new Scanner(System.in);
     private static boolean jalan = true;
+    private static int [][] isi = new int[4][8];
     private static String [][] TiketPesawat = {
             {"0001","27 Oktober 2018","Malang","Jakarta"},
             {"0002","28 Oktober 2018","Jakarta","Malang"},
@@ -23,7 +24,7 @@ public class Tiket {
 
     private static void showMenu(){
         System.out.println("Program Tiket Transportasi");
-        System.out.println("---------------------------------------");
+        System.out.println("-------------------------------------------------");
         do{
             System.out.println("1. Cek Tiket Pesanan");
             System.out.println("2. Batalkan Pemesanan");
@@ -34,6 +35,7 @@ public class Tiket {
             pil = in.next();
             switch (pil){
                 case "1": cek();break;
+                case "3": pesan();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Kami");jalan = false;break;
                 default:System.out.println("Masukkan Salah!");break;
             }
@@ -44,10 +46,10 @@ public class Tiket {
             System.out.println("1. Login");
             System.out.println("2. Daftar");
             System.out.println("3. Exit");
-            System.out.println("---------------------------------------");
+            System.out.println("-------------------------------------------------");
             System.out.print("Masukkan Pilihan = ");
             pil = in.next();
-            System.out.println("---------------------------------------");
+            System.out.println("-------------------------------------------------");
             switch (pil){
                 case "1": login();break;
                 case "2": daftar();break;
@@ -65,7 +67,7 @@ public class Tiket {
         password = in.next();
         Password.add(password);
         System.out.println("Data Tersimpan!");
-        System.out.println("---------------------------------------");
+        System.out.println("-------------------------------------------------");
         access();
     }
 
@@ -82,12 +84,40 @@ public class Tiket {
                     showMenu();
                 }
             }
-            System.out.println("---------------------------------------");
+            System.out.println("-------------------------------------------------");
         }
     }
     private static void cek(){
         do{
-
+            for(int i = 0; i < isi.length;i++){
+                for(int j = 0; j < isi[i].length;j++){
+                    if(isi [i][j] == 0){
+                        System.out.println("Anda Belum Melakukan Pemesanan, Silahkan Lakukan Pemesanan Terlebih Dahulu");pesan();
+                    }
+                }
+            }
+        }while (jalan);
+    }
+    private static void pesan(){
+        System.out.println("Pilih Jenis Transportasi yang Diinginkan");
+        System.out.println("-------------------------------------------------");
+        System.out.println("1. Kereta");
+        System.out.println("2. Pesawat");
+        System.out.println("0. Keluar");
+        System.out.print("Masukkan Pilihan = ");
+        pil = in.next();
+        System.out.println("-------------------------------------------------");
+        switch (pil){
+            case "0": showMenu();break;
+            case "1": kereta();break;
+        }
+    }
+    private static void kereta(){
+        do{
+            System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|\n","No","Id","Tanggal Keberangkatan","Asal","Tujuan");
+            for(int i = 0; i < TiketKereta.length;i++){
+                System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|\n","No",TiketKereta[i][0],TiketKereta[i][1],TiketKereta[i][2],TiketKereta[i][3]);
+            }
         }while (jalan);
     }
     public static void main(String[] args){

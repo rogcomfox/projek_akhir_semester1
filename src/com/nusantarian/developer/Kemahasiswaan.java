@@ -111,7 +111,7 @@ public class Kemahasiswaan {
             System.out.println("Daftar Mahasiswa");
             System.out.printf("|%-25s|%-15s|%-25s|\n","Nama","NIM","Prodi");
             for(int i = 0; i<Nama.size();i++){
-                System.out.printf("|%-25s|%-15d|%-25s|\n",Nama.get(i),Nim.get(i),Prodi.get(i));
+                System.out.printf("|%-25s|%-15s|%-25s|\n",Nama.get(i),Nim.get(i),Prodi.get(i));
             }
             System.out.println("-----------------------------");
         }
