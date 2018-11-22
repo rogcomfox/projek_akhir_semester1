@@ -5,7 +5,8 @@ import java.util.*;
 public class Tiket {
     private static Scanner in = new Scanner(System.in);
     private static boolean jalan = true;
-    private static int [][] isi = new int[4][8];
+    private static int a,no,jumlah, harga = 0;
+    private static int [][] isi = new int[4][4];
     private static String [][] TiketPesawat = {
             {"0001","27 Oktober 2018","Malang","Jakarta"},
             {"0002","28 Oktober 2018","Jakarta","Malang"},
@@ -13,10 +14,10 @@ public class Tiket {
             {"0004","30 Oktober 2018","Surabaya","Jakarta"},
     };
     private static String [][] TiketKereta = {
-            {"1001","1 November 2018","Malang","Jakarta"},
-            {"1002","2 November 2018","Jakarta","Malang"},
-            {"1003","3 November 2018","Surabaya","Jakarta"},
-            {"1004","4 November 2018","Jakarta","Surabaya"},
+            {"1001","1 November 2018","300000","Malang","Jakarta"},
+            {"1002","2 November 2018","350000","Jakarta","Malang"},
+            {"1003","3 November 2018","400000","Surabaya","Jakarta"},
+            {"1004","4 November 2018","450000","Jakarta","Surabaya"},
     };
     private static ArrayList Username = new ArrayList();
     private static ArrayList Password = new ArrayList();
@@ -114,11 +115,40 @@ public class Tiket {
     }
     private static void kereta(){
         do{
-            System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|\n","No","Id","Tanggal Keberangkatan","Asal","Tujuan");
+            System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|%-10s|\n","No","Id","Tanggal Keberangkatan","Harga","Asal","Tujuan");
             for(int i = 0; i < TiketKereta.length;i++){
-                System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|\n","No",TiketKereta[i][0],TiketKereta[i][1],TiketKereta[i][2],TiketKereta[i][3]);
+                System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|\n",i+1,TiketKereta[i][0],TiketKereta[i][1],TiketKereta[i][2],TiketKereta[i][3],TiketKereta[i][4]);
+            }
+            System.out.print("Masukkan No Kereta    = ");
+            no = in.nextByte();
+            System.out.print("Masukkan Jumlah Tiket = ");
+            jumlah = in.nextByte();
+            a = Integer.parseInt(TiketKereta[no - 1][2]);
+            harga = a * jumlah;
+            if(no == 1){
+                isi[0][0]+=jumlah;isi[0][1]+=harga;
+            }
+            if(no == 2){
+                isi[1][0]+=jumlah;isi[1][1]+=harga;
+            }
+            if(no == 3){
+                isi[2][0]+=jumlah;isi[2][1]+=harga;
+            }
+            if(no == 4){
+                isi[3][0]+=jumlah;isi[3][1]+=harga;
             }
         }while (jalan);
+    }
+    private static void ulang(){
+        tanya = in.next();
+        if("y".equalsIgnoreCase(tanya)){
+            return;
+        }
+        if("n".equalsIgnoreCase(tanya)){
+            showMenu();
+        }else{
+            System.out.print("Masukkan Salah");ulang();
+        }
     }
     public static void main(String[] args){
         access();
