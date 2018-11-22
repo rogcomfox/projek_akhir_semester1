@@ -8,8 +8,7 @@ public class Kemahasiswaan {
     private static ArrayList Nama = new ArrayList();
     private static ArrayList Nim = new ArrayList();
     private static ArrayList Prodi = new ArrayList();
-    private static String nama,prodi,pil,tanya,a;
-    private static int nim;
+    private static String nama,prodi,pil,tanya,a,nim;
     private static boolean go = true;
     private static void showMenu() {
         System.out.println("Data Mahasiswa");
@@ -39,9 +38,17 @@ public class Kemahasiswaan {
             if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
                 System.out.println("Data Kosong");
             }else{
-                System.out.print("Masukkan Nama yang Akan Dihapus");
+                System.out.print("Masukkan Nama yang Akan Dihapus = ");
                 is.nextLine();
                 nama = is.nextLine();
+                for(int i = 0; i < Nama.size();i++){
+                    a = Nama.get(i).toString();
+                    if(nama.equalsIgnoreCase(a)){
+                        Nama.remove(i);Nim.remove(i);Prodi.remove(i);
+                    }else {
+                        System.out.print("Masukkan Salah");hapusdata();
+                    }
+                }
             }
         }while (go);
     }
@@ -52,7 +59,8 @@ public class Kemahasiswaan {
                 System.out.println("Data Kosong");
             }else{
                 System.out.print("Masukkan Nama = ");
-                nama = is.next();
+                is.nextLine();
+                nama = is.nextLine();
                 System.out.println("-----------------------------");
                 for(int i = 0; i < Nama.size();i++){
                     a = Nama.get(i).toString();
@@ -61,6 +69,7 @@ public class Kemahasiswaan {
                         System.out.println("-----------------------------");
                         System.out.print("Apakah Ingin Mencari Data Lagi <y/n>? ");
                         ulang();
+                        System.out.println("-----------------------------");
                     }
                 }
             }
@@ -70,17 +79,17 @@ public class Kemahasiswaan {
     public static void tambahdata(){
         do{
             System.out.print("Masukkan Nama Mahasiswa = ");
-            nama = is.next();
+            is.nextLine();
+            nama = is.nextLine();
             Nama.add(nama);
             System.out.print("Masukkan Prodi Mahasiswa= ");
-            prodi = is.next();
+            prodi = is.nextLine();
             Prodi.add(prodi);
             System.out.print("Masukkan NIM Mahasiswa  = ");
-            nim = is.nextInt();
+            nim = is.next();
             Nim.add(nim);
             System.out.print("Apakah Anda Ingin Menginput Data Lagi <y/n>? ");
             ulang();
-            System.out.println("-----------------------------");
         }while(go);
     }
     private static void ulang(){
@@ -93,6 +102,7 @@ public class Kemahasiswaan {
         }else{
             System.out.println("Masukkan Salah");ulang();
         }
+        System.out.println("-----------------------------");
     }
     public static void tampildata(){
         if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
