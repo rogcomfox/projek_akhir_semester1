@@ -3,17 +3,17 @@ package com.nusantarian.developer;
 import java.util.Scanner;
 
 public class Bank {
-    static Scanner in = new Scanner(System.in);
-    static String username, pil, password;
-    static boolean jalan = true;
-    static String[][] Bank ={
+    private static Scanner in = new Scanner(System.in);
+    private static String username, pil, password;
+    private static boolean jalan = true;
+    private static String[][] Bank ={
             {"Okza","123456","ABC","00000000","500000"},
             {"Farhan","234567","ABC","00000001","2000000"},
             {"Syarief","345678","Diriman","11111110","1500000"},
             {"Titus","456789","IBN","22222202","700000"},
             {"Darell","567890","IRB","33333303","100000000"}
     };
-    public static void masuk(){
+    private static void masuk(){
         do{
             System.out.print("Masukkan Username = ");
             username = in.next();
@@ -23,12 +23,12 @@ public class Bank {
                 if(username.equalsIgnoreCase(Bank[i][0]) && password.equalsIgnoreCase(Bank[i][1])){
                     System.out.println("-------------------------------------");menu();
                 }else {
-                    System.out.println("Masukkan Salah");break;
+                    System.out.println("Masukkan Salah");masuk();
                 }
             }
         }while (jalan);
     }
-    public static void showMenu(){
+    private static void showMenu(){
         System.out.println("Program ATM Bank IBN");
         System.out.println("-------------------------------------");
         System.out.println("1. Daftar Rekening");
@@ -49,7 +49,7 @@ public class Bank {
             default:System.out.println("Masukkan Salah");break;
         }
     }
-    public static void menu(){
+    private static void menu(){
         do{
             System.out.println("1. Informasi Saldo");
             System.out.println("2. Penarikan Tunai");
@@ -64,9 +64,13 @@ public class Bank {
             pil = in.next();
             System.out.println("-------------------------------------");
             switch (pil){
+                case "4": ganti();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Ini");jalan = false;break;
             }
         }while (jalan);
+    }
+    private static void ganti(){
+        System.out.print("Masukkan Username = ");
     }
     public static void main(String[] args){
         showMenu();
