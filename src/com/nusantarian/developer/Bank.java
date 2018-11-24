@@ -15,20 +15,17 @@ public class Bank {
             {"Darell","567890","IRB","33333303","100000000"}
     };
     private static void masuk(){
-        do{
-            System.out.print("Masukkan Username = ");
-            username = in.next();
-            System.out.print("Masukkan Password = ");
-            password = in.next();
-            for(i = 0; i < Bank.length;i++){
-                if(username.equalsIgnoreCase(Bank[i][0]) || password.equalsIgnoreCase(Bank[i][1])){
-                    System.out.println("-------------------------------------");menu();break;
-                }
+        System.out.print("Masukkan Username = ");
+        username = in.next();
+        System.out.print("Masukkan Password = ");
+        password = in.next();
+        for(i = 0; i < Bank.length;i++)
+            if(username.equalsIgnoreCase(Bank[i][0]) || password.equalsIgnoreCase(Bank[i][1])){
+                System.out.println("-------------------------------------");menu();
             }
-            if(!username.equalsIgnoreCase(Bank[i][0]) || !password.equalsIgnoreCase(Bank[i][1])) {
-                System.out.println("Masukkan Salah");masuk();break;
-            }
-        }while (jalan);
+        if(!username.equalsIgnoreCase(Bank[i][0]) || !password.equalsIgnoreCase(Bank[i][1])) {
+            System.out.println("Masukkan Salah");masuk();
+        }
     }
     private static void showMenu(){
         do{

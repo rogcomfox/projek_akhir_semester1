@@ -9,7 +9,7 @@ public class NilaiMahasiswa {
     private static ArrayList Nilai = new ArrayList();
     private static boolean go = true;
     private static String pil,nama,nim,a,ip,tanya;
-    private static int nilai;
+    private static int nilai,i;
     private static double ip1;
 
     private static void showMenu(){
@@ -27,6 +27,7 @@ public class NilaiMahasiswa {
             switch (pil){
                 case "1": tambahnilai();break;
                 case "3": lihatnilai();break;
+                case "2": editnilai();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Kami");go = false;break;
                 default:System.out.println("Masukkan Salah");break;
             }
@@ -67,7 +68,7 @@ public class NilaiMahasiswa {
         if(Nama.isEmpty()&&Nilai.isEmpty()&&Nim.isEmpty()){
             System.out.println("Data Kosong, Silahkan Isikan Data Terlebih Dahulu");tambahnilai();
         }else{
-            for(int i = 0; i < Nama.size();i++){
+            for(i = 0; i < Nama.size();i++){
                 a = Nama.get(i).toString();
                 if(nama.equalsIgnoreCase(a)){
                     konversi();
@@ -89,12 +90,20 @@ public class NilaiMahasiswa {
         if(nilai >= 50) ip = "D"; ip1 = 0.50;
         if(nilai >= 0) ip = "E"; ip1 = 0.00;
     }
+    private static void editnilai(){
+
+    }
     private static void carinilai(){
         do{
             if(Nama.isEmpty()&&Nilai.isEmpty()&&Nim.isEmpty()) {
                 System.out.println("Data Kosong, Silahkan Isikan Data Terlebih Dahulu");tambahnilai();
             }else{
                 System.out.print("Masukkan Nama = ");
+                in.nextLine();
+                nama = in.nextLine();
+                for(i = 0;i < Nama.size();i ++){
+
+                }
             }
         }while (go);
     }
