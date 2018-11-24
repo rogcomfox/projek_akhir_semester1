@@ -9,6 +9,7 @@ public class Kemahasiswaan {
     private static ArrayList Nim = new ArrayList();
     private static ArrayList Prodi = new ArrayList();
     private static String nama,prodi,pil,tanya,a,nim;
+    private static int i;
     private static boolean go = true;
     private static void showMenu() {
         System.out.println("Data Mahasiswa");
@@ -41,7 +42,7 @@ public class Kemahasiswaan {
                 System.out.print("Masukkan Nama yang Akan Dihapus = ");
                 is.nextLine();
                 nama = is.nextLine();
-                for(int i = 0; i < Nama.size();i++){
+                for(i = 0; i < Nama.size();i++){
                     a = Nama.get(i).toString();
                     if(nama.equalsIgnoreCase(a)){
                         Nama.remove(i);Nim.remove(i);Prodi.remove(i);
@@ -76,7 +77,7 @@ public class Kemahasiswaan {
         }while (go);
     }
 
-    public static void tambahdata(){
+    private static void tambahdata(){
         do{
             System.out.print("Masukkan Nama Mahasiswa = ");
             is.nextLine();
@@ -104,13 +105,13 @@ public class Kemahasiswaan {
         }
         System.out.println("-----------------------------");
     }
-    public static void tampildata(){
+    private static void tampildata(){
         if(Nama.isEmpty()&&Nim.isEmpty()&&Prodi.isEmpty()){
             System.out.println("Data Kosong");
         }else{
             System.out.println("Daftar Mahasiswa");
             System.out.printf("|%-25s|%-15s|%-25s|\n","Nama","NIM","Prodi");
-            for(int i = 0; i<Nama.size();i++){
+            for(i = 0; i<Nama.size();i++){
                 System.out.printf("|%-25s|%-15s|%-25s|\n",Nama.get(i),Nim.get(i),Prodi.get(i));
             }
             System.out.println("-----------------------------");

@@ -10,8 +10,8 @@ public class Karyawan {
     private static ArrayList Telpon = new ArrayList();
     private static ArrayList Alamat = new ArrayList();
     private static boolean jalan = true;
-    private static int telepon;
-    private static String pil, tanya, email, nama,id,alamat;
+    private static int i;
+    private static String pil, tanya, email, nama,id,alamat,telepon;
 
     private static void showMenu(){
         System.out.println("Database Karyawan");
@@ -27,7 +27,8 @@ public class Karyawan {
             pil = in.next();
             switch (pil){
                 case "1":tambahdata();break;
-                case "2":editdata();break;
+                case "2":tampil();break;
+                case "3":editdata();break;
                 case "6":System.out.println("Terimakasih Telah Menggunakan Program Kami");jalan = false;break;
                 default:System.out.println("Masukkan Salah");break;
             }
@@ -45,7 +46,7 @@ public class Karyawan {
             System.out.print("Masukkan Email  = ");
             email = in.next();
             System.out.print("Masukkan Telpon = ");
-            telepon = in.nextInt();
+            telepon = in.next();
             Nama.add(nama);
             ID.add(id);
             Alamat.add(alamat);
@@ -67,6 +68,9 @@ public class Karyawan {
         }
     }
     private static void editdata(){
+
+    }
+    private static void tampil(){
 
     }
 }
