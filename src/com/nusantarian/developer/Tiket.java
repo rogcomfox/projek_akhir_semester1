@@ -5,7 +5,7 @@ import java.util.*;
 public class Tiket {
     private static Scanner in = new Scanner(System.in);
     private static boolean jalan = true;
-    private static int a,no,jumlah, harga = 0,sum = 0;
+    private static int a,i,j,no,jumlah, harga = 0,sum = 0;
     private static int [][] isi = new int[4][4];
     private static String [][] TiketPesawat = {
             {"0001","27 Oktober 2018","Malang","Jakarta"},
@@ -81,20 +81,21 @@ public class Tiket {
             System.out.print("Masukkan Password = ");
             password = in.next();
             System.out.println("-------------------------------------------------");
-            for(int i = 0; i < user.size();i++){
+            for(i = 0; i < user.size();i++){
                 tanya = user.get(i).toString();
-                if(username.equalsIgnoreCase(tanya)||password.equalsIgnoreCase(tanya)){
+                if(username.equalsIgnoreCase(tanya)&&password.equalsIgnoreCase(tanya)){
                     showMenu();
-                }else{
-                    System.out.println("Masukkan Salah");return;
                 }
+            }
+            if(!username.equalsIgnoreCase(tanya)&&!password.equalsIgnoreCase(tanya)){
+                System.out.println("Masukkan Salah");login();
             }
         }
     }
     private static void cek(){
         do{
-            for(int i = 0; i < isi.length;i++){
-                for(int j = 0; j < isi[i].length;j++){
+            for(i = 0; i < isi.length;i++){
+                for(j = 0; j < isi[i].length;j++){
                     if(isi [i][j] == 0){
                         System.out.println("Anda Belum Melakukan Pemesanan, Silahkan Lakukan Pemesanan Terlebih Dahulu");pesan();
                     }
@@ -114,12 +115,13 @@ public class Tiket {
         switch (pil){
             case "0": showMenu();break;
             case "1": kereta();break;
+            case "2": pesawat();break;
         }
     }
     private static void kereta(){
         do{
             System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|%-10s|\n","No","Id","Tanggal Keberangkatan","Harga","Asal","Tujuan");
-            for(int i = 0; i < TiketKereta.length;i++){
+            for(i = 0; i < TiketKereta.length;i++){
                 System.out.printf("|%-3d|%-5s|%-20s|%-15s|%-10s|%-10s|\n",i+1,TiketKereta[i][0],TiketKereta[i][1],TiketKereta[i][2],TiketKereta[i][3],TiketKereta[i][4]);
             }
             System.out.print("Masukkan No Kereta    = ");
@@ -141,6 +143,35 @@ public class Tiket {
                 isi[3][0]+=jumlah;isi[3][1]+=harga;
             }
             sum = isi[0][1] + isi[1][1] + isi[2][1] + isi [3][1];
+            System.out.print("Apakah Anda Ingin Melakukan Pemesanan Lagi <y/n> ? ");
+            ulang();
+        }while (jalan);
+    }
+    private static void pesawat(){
+        do{
+            System.out.printf("|%-5s|%-5s|%-20s|%-10s|%-10s|%-10s|\n","No","Id","Tanggal Keberangkatan","Harga","Asal","Tujuan");
+            for(i = 0; i < TiketPesawat.length;i++){
+                System.out.printf("|%-3d|%-5s|%-20s|%-15s|%-10s|%-10s|\n",i+1,TiketPesawat[i][0],TiketPesawat[i][1],TiketPesawat[i][2],TiketPesawat[i][3],TiketPesawat[i][4]);
+            }
+            System.out.print("Masukkan No Pesawat    = ");
+            no = in.nextByte();
+            System.out.print("Masukkan Jumlah Tiket = ");
+            jumlah = in.nextByte();
+            a = Integer.parseInt(TiketPesawat[no - 1][2]);
+            harga = a * jumlah;
+            if(no == 1){
+                isi[0][2]+=jumlah;isi[0][3]+=harga;
+            }
+            if(no == 2){
+                isi[1][2]+=jumlah;isi[1][3]+=harga;
+            }
+            if(no == 3){
+                isi[2][2]+=jumlah;isi[2][3]+=harga;
+            }
+            if(no == 4){
+                isi[3][2]+=jumlah;isi[3][3]+=harga;
+            }
+            sum = isi[0][3] + isi[1][3] + isi[2][3] + isi [3][3];
             System.out.print("Apakah Anda Ingin Melakukan Pemesanan Lagi <y/n> ? ");
             ulang();
         }while (jalan);

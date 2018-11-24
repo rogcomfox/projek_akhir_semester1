@@ -21,12 +21,12 @@ public class Bank {
             System.out.print("Masukkan Password = ");
             password = in.next();
             for(i = 0; i < Bank.length;i++){
-                if(username.equalsIgnoreCase(Bank[i][0]) && password.equalsIgnoreCase(Bank[i][1])){
-                    System.out.println("-------------------------------------");menu();
+                if(username.equalsIgnoreCase(Bank[i][0]) || password.equalsIgnoreCase(Bank[i][1])){
+                    System.out.println("-------------------------------------");menu();break;
                 }
-                if(!username.equalsIgnoreCase(Bank[i][0]) && !password.equalsIgnoreCase(Bank[i][1])) {
-                    System.out.println("Masukkan Salah");masuk();
-                }
+            }
+            if(!username.equalsIgnoreCase(Bank[i][0]) || !password.equalsIgnoreCase(Bank[i][1])) {
+                System.out.println("Masukkan Salah");masuk();break;
             }
         }while (jalan);
     }
@@ -36,7 +36,6 @@ public class Bank {
             System.out.println("-------------------------------------");
             System.out.println("1. Daftar Rekening");
             System.out.println("2. Masuk");
-            System.out.println("0. Keluar");
             System.out.println("-------------------------------------");
             System.out.print("Masukkan Pilihan = ");
             pil = in.next();
@@ -44,15 +43,14 @@ public class Bank {
             switch(pil){
                 case "1": tampil();break;
                 case "2": masuk();break;
-                case "0": System.out.println("Terimakasih Telah Menggunakan Program Kami");break;
                 default:System.out.println("Masukkan Salah");break;
             }
-        }while (!pil.equals("0"));
+        }while (jalan);
     }
     private static void tampil(){
         System.out.println("Daftar Rekening");
         System.out.printf("|%-10s|%-10s|%-11s|\n","Username","Bank","No Rekening");
-        for(int i = 0; i < Bank.length; i++){
+        for(i = 0; i < Bank.length; i++){
             System.out.printf("|%-10s|%-10s|%-11s|\n",Bank[i][0],Bank[i][2],Bank[i][3]);
         }
         System.out.println("-------------------------------------");
@@ -73,12 +71,13 @@ public class Bank {
             System.out.println("-------------------------------------");
             switch (pil){
                 case "4": ganti();break;
-                case "5": System.out.println("Terimakasih Telah Menggunakan Program Ini");break;
+                case "5": System.out.println("Terimakasih Telah Menggunakan Program Ini");jalan = false;break;
             }
-        }while (!pil.equals("5"));
+        }while (jalan);
     }
     private static void ganti(){
-        System.out.print("Masukkan Username = ");
+        System.out.print("Masukkan Password Baru = ");
+        username = in.next();
     }
     public static void main(String[] args){
         showMenu();
