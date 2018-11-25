@@ -12,7 +12,7 @@ public class Kasir {
             {"Nasi Pecel","11000","Es Buah","10000"},
     };
     private static String pil,makan,minum,a,b;
-    private static int c,d,i;
+    private static int c,d;
     private static boolean go = true;
 
     private static void showmenu(){
@@ -38,7 +38,7 @@ public class Kasir {
             makan = in.nextLine();
             System.out.print("Masukkan Nama Minuman = ");
             minum = in.nextLine();
-            for(i = 0; i < menu.length;i++){
+            for(int i = 0; i < menu.length;i++){
                 a = menu[i][0];
                 b = menu[i][2];
                 c = Integer.parseInt(menu[i][1]);

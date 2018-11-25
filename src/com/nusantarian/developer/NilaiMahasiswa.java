@@ -1,6 +1,5 @@
 package com.nusantarian.developer;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.*;
 
 public class NilaiMahasiswa {
