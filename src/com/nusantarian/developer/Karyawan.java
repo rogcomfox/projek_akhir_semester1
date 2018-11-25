@@ -11,7 +11,7 @@ public class Karyawan {
     private static ArrayList Alamat = new ArrayList();
     private static boolean jalan = true;
     private static int i;
-    private static String pil, tanya, email, nama,id,alamat,telepon;
+    private static String pil, tanya, email, nama,id,alamat,telepon,a;
 
     private static void showMenu(){
         System.out.println("Database Karyawan");
@@ -23,8 +23,10 @@ public class Karyawan {
             System.out.println("4. Menghapus Data Karyawan");
             System.out.println("5. Mencari Data Karyawan");
             System.out.println("6. Keluar");
+            System.out.println("-------------------------------");
             System.out.print("Masukkan Pilihan = ");
             pil = in.next();
+            System.out.println("-------------------------------");
             switch (pil){
                 case "1":tambahdata();break;
                 case "2":tampil();break;
@@ -52,8 +54,10 @@ public class Karyawan {
             Alamat.add(alamat);
             Email.add(email);
             Telpon.add(telepon);
+            System.out.println("-------------------------------");
             System.out.print("Apakah Anda Ingin Menambah Data Lagi <y/n>? ");
             ulang();
+            System.out.println("-------------------------------");
         }while(jalan);
     }
     private static void ulang(){
@@ -68,9 +72,26 @@ public class Karyawan {
         }
     }
     private static void editdata(){
-
+        if(Nama.isEmpty()){
+            System.out.println("Data Kosong Silahkan Isikan Data Terlebih Dahulu");tambahdata();
+        }else {
+            System.out.print("Masukkan Nama Karyawan = ");
+            in.nextLine();
+            nama = in.nextLine();
+            System.out.println("-------------------------------");
+            for(i = 0;i < Nama.size();i++){
+                a = Nama.get(i).toString();
+                if(nama.equalsIgnoreCase(a)){
+                    System.out.println("Data Ditemukan!");
+                    System.out.println("-------------------------------");
+                }
+            }
+        }
     }
     private static void tampil(){
 
+    }
+    public static void main(String[] args){
+        showMenu();
     }
 }
