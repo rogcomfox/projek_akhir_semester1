@@ -1,5 +1,6 @@
 package com.nusantarian.developer;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.*;
 
 public class NilaiMahasiswa {
@@ -9,7 +10,7 @@ public class NilaiMahasiswa {
     private static ArrayList Nilai = new ArrayList();
     private static boolean go = true;
     private static String pil,nama,nim,a,ip,tanya;
-    private static int nilai,i;
+    private static int nilai;
     private static double ip1;
 
     private static void showMenu(){
@@ -28,6 +29,7 @@ public class NilaiMahasiswa {
                 case "1": tambahnilai();break;
                 case "3": lihatnilai();break;
                 case "2": editnilai();break;
+                case "4": carinilai();break;
                 case "5": System.out.println("Terimakasih Telah Menggunakan Program Kami");go = false;break;
                 default:System.out.println("Masukkan Salah");break;
             }
@@ -46,6 +48,7 @@ public class NilaiMahasiswa {
             System.out.print("Masukkan Nilai = ");
             nilai = in.nextByte();
             Nilai.add(nilai);
+            konversi();
             System.out.print("Apakah Anda Ingin Memasukkan Nilai Lagi <y/n>? ");
             ulang();
             System.out.println("---------------------------------------");
@@ -68,30 +71,40 @@ public class NilaiMahasiswa {
         if(Nama.isEmpty()&&Nilai.isEmpty()&&Nim.isEmpty()){
             System.out.println("Data Kosong, Silahkan Isikan Data Terlebih Dahulu");tambahnilai();
         }else{
-            for(i = 0; i < Nama.size();i++){
+            for(int i = 0; i < Nama.size();i++){
                 a = Nama.get(i).toString();
                 if(nama.equalsIgnoreCase(a)){
-                    konversi();
                     System.out.printf("|%-3s|%-15s|%-25s|%-7s|%-5s|%-11s|\n","No","NIM","Nama Lengkap","Nilai","IP","Huruf Mutu");
-                    System.out.printf("|%-3d|%-15s|%-25s|%-7d|%-5.1f|%-11s|\n",i+1,Nim.get(i),Nama.get(i),Nilai.get(i),ip1,ip);
+                    System.out.printf("|%-3d|%-15s|%-25s|%-7s|%-5.1f|%-11s|\n",i+1,Nim.get(i),Nama.get(i),Nilai.get(i),ip1,ip);
                     System.out.println("---------------------------------------");
                 }
             }
         }
     }
     private static void konversi(){
-        if(nilai == 100) ip = "A"; ip1 = 4.00;
-        if(nilai >= 80) ip = "A"; ip1 = 3.50;
-        if(nilai >= 75) ip = "B+"; ip1 = 3.00;
-        if(nilai >= 70) ip = "B"; ip1 = 2.50;
-        if(nilai >= 65) ip = "C+"; ip1 = 2.00;
-        if(nilai >= 60) ip = "C"; ip1 = 1.50;
-        if(nilai >= 55) ip = "D+"; ip1 = 1.00;
-        if(nilai >= 50) ip = "D"; ip1 = 0.50;
+        if(nilai >= 80){
+            ip = "A";ip1 = 4.00;
+        }
+        if(nilai >= 75) {
+            ip = "B+";ip1 = 3.50;
+        }
+        if(nilai >= 70){
+            ip = "B";ip1 = 3.00;
+        }
+        if(nilai >= 65){
+            ip = "C+";ip1 = 2.50;
+        }
+        if(nilai >= 60){
+            ip = "C";ip1 = 2.00;
+        }
+        if(nilai >= 55) ip = "D+"; ip1 = 1.50;
+        if(nilai >= 50) ip = "D"; ip1 = 1.00;
         if(nilai >= 0) ip = "E"; ip1 = 0.00;
     }
     private static void editnilai(){
-
+        System.out.print("Masukkan Nama = ");
+        in.nextLine();
+        nama = in.nextLine();
     }
     private static void carinilai(){
         do{
@@ -101,8 +114,13 @@ public class NilaiMahasiswa {
                 System.out.print("Masukkan Nama = ");
                 in.nextLine();
                 nama = in.nextLine();
-                for(i = 0;i < Nama.size();i ++){
-
+                for(int i = 0;i < Nama.size();i ++){
+                    a = Nama.get(i).toString();
+                    if(nama.equalsIgnoreCase(a)){
+                        System.out.printf("Nama  : %s \nNIM   : %s\nNilai : %s\n",Nama.get(i),Nim.get(i),Nilai.get(i));
+                    }if(!nama.equalsIgnoreCase(a)){
+                        System.out.println("Masukkan Salah");carinilai();
+                    }
                 }
             }
         }while (go);
