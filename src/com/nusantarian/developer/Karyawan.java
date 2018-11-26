@@ -84,6 +84,24 @@ public class Karyawan {
                 if(nama.equalsIgnoreCase(a)){
                     System.out.println("Data Ditemukan!");
                     System.out.println("-------------------------------");
+                    System.out.println("1. Nama");
+                    System.out.println("2. ID");
+                    System.out.println("3. Alamat");
+                    System.out.println("4. Email");
+                    System.out.println("5. Telpon");
+                    System.out.println("Masukkan Pilihan Anda = ");
+                    pil = in.next();
+                    switch (pil){
+                        case "1":
+                            System.out.print("Masukkan Nama Baru = ");
+                            in.nextLine();
+                            nama = in.nextLine();
+                            Nama.set(i, nama);break;
+                        case "2":
+                            System.out.print("Masukkan ID Baru   = ");
+                            id = in.next();
+                            ID.set(i, id);break;
+                    }
                 }
             }
         }
